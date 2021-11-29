@@ -1,0 +1,1 @@
+export const PROFILE_IMAGE_VALID_EXTENSIONS = ["jpg", "png", "jpeg"];
