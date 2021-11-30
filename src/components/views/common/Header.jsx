@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-
-
+import FeatherIcon from 'feather-icons-react';
 
 import { userActions } from '../../redux/actions/user.actions'
 import { Logo } from "../../image"
@@ -22,20 +21,20 @@ class Header extends Component {
             <>
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                     <Container>
-                        <Navbar.Brand href="#home">
+                        <Navbar.Brand href="/dashboard">
                             <img
                                 alt=""
                                 src={Logo}
                                 width="30"
                                 height="30"
                                 className="d-inline-block align-top"
-                            />{' '}
-                            React Js (Class component structure with redux)
+                            />
+                            React Js
                         </Navbar.Brand>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="ml-auto">
-                                <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+                                <NavDropdown title={<FeatherIcon icon="user" />} id="collasible-nav-dropdown">
                                     <NavDropdown.Item href="#">Profile</NavDropdown.Item>
                                     <NavDropdown.Item href="#">Change Password</NavDropdown.Item>
                                     <NavDropdown.Divider />

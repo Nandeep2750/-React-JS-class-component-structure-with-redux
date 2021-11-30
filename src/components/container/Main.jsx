@@ -51,8 +51,8 @@ class Main extends Component {
             return (
                 <ErrorPageLayout>
                     <Route {...rest} render={props => (
-                        <Component {...props} />
-                        // this.props.loggedIn ? <Component {...props} /> : <Redirect to='/' />
+                        // <Component {...props} />
+                        this.props.loggedIn ? <Component {...props} /> : <Redirect to='/' />
                     )} />
                 </ErrorPageLayout>
             )

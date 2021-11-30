@@ -35,7 +35,7 @@ function edit(userAllData) {
 
 function logout() {
     return dispatch => {
-        var userData = localStorage.removeItem('projectUser');
+        localStorage.removeItem('projectUser');
         dispatch({ 
             type: Types.LOGOUT, 
             payload : { userData : null , token : null }

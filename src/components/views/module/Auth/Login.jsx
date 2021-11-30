@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import SimpleReactValidator from 'simple-react-validator';
-import { Card, Form, Button } from 'react-bootstrap'
+import { Card, Form, Button, Alert } from 'react-bootstrap'
 import { toast } from 'react-toastify';
 
 import { userActions } from '../../../redux/actions/user.actions'
@@ -17,8 +17,8 @@ export class Login extends Component {
                 'Content-Type': 'application/json',
             },
             user: {
-                email: 'eve.holt@reqres.in',
-                password: 'cityslicka'
+                email: '',
+                password: ''
             }
         }
 
@@ -67,6 +67,11 @@ export class Login extends Component {
                 <Card style={{ width: '24rem' }} className="mx-auto">
                     <Card.Body>
                         <Card.Title className="text-center">Login</Card.Title>
+                        <Alert variant="info">
+                            <b> Use given credentials... </b>  <br />
+                            <b> Email: </b> eve.holt@reqres.in <br />
+                            <b> Password: </b> cityslicka <br />
+                        </Alert>
                         <Form onSubmit={this.handleSubmit} className="mt-3" >
                             <Form.Group className="mb-3">
                                 <Form.Label>Email</Form.Label>
@@ -93,7 +98,7 @@ export class Login extends Component {
                                 />
                                 {this.validator.message('password', user.password, 'required')}
                             </Form.Group>
-                            <Button variant="primary" type="submit">
+                            <Button variant="primary" type="submit" className="d-flex mx-auto">
                                 Login
                             </Button>
                         </Form>
