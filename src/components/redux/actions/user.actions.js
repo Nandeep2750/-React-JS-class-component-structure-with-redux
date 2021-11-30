@@ -19,8 +19,8 @@ function login(userAllData) {
 function edit(userAllData) {
     return dispatch => {
 
-        let digicaseUser = loadFromLocalStorage();
-        let userData = digicaseUser.userData
+        let projectUser = loadFromLocalStorage();
+        let userData = projectUser.userData
 
         userData.token = userAllData.token
 
@@ -35,7 +35,7 @@ function edit(userAllData) {
 
 function logout() {
     return dispatch => {
-        var userData = localStorage.removeItem('digicaseUser');
+        var userData = localStorage.removeItem('projectUser');
         dispatch({ 
             type: Types.LOGOUT, 
             payload : { userData : null , token : null }
