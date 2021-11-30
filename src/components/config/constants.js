@@ -2,7 +2,7 @@
 // const ENV = 'development'
 // const ENV = 'master'
 
-const REACT_APP_ENV = process.env.REACT_APP_ENV
+const REACT_APP_ENV = process.env.REACT_APP_ENV || 'development'
 console.log("🚀 ~ file: constants.js ~ line 6 ~ REACT_APP_ENV", REACT_APP_ENV)
 
 var BASEURL = '';
