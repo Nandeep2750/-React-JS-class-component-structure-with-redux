@@ -3,7 +3,10 @@ import SimpleReactValidator from 'simple-react-validator';
 import { Card, Form, Button } from 'react-bootstrap'
 import { toast } from 'react-toastify';
 
+import { userActions } from '../../../redux/actions/user.actions'
+
 import Api from "../../../helper/Api.js";
+import { connect } from 'react-redux';
 const api = new Api();
 export class Login extends Component {
 
@@ -45,9 +48,8 @@ export class Login extends Component {
                 data: this.state.user
             }).then(res => {
                 if (res.status === 200) { 
-                    console.log("🚀 ~ file: Login.jsx ~ line 50 ~ Login ~ res?.data?.data", res?.data)
-                    // this.props.login(res?.data?.data);
-                    // this.props.history.push('/dashboard');
+                    this.props.login(res?.data);
+                    this.props.history.push('/dashboard');
                 } else {
                     toast.error(res.message);
                 }
@@ -102,4 +104,12 @@ export class Login extends Component {
     }
 }
 
-export default Login
+const mapStateToProps = (state) => ({
+    
+})
+
+const mapDispatchToProps = {
+    login: userActions.login
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
