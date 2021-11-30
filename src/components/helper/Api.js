@@ -105,7 +105,7 @@ class Api {
                     }else if( parseInt(error.response.status) === 404 ){
                         obj = {
                             'status': error.response.status,
-                            'message': (error.response.data.message),
+                            'message': "No data",
                         };
                     }else{
                         obj = {

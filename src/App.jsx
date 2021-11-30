@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import './App.css';
-import './assets/css/style.css';
 import { ToastContainer } from 'react-toastify';
 
-
-
-import Loader from './components/views/common/Loader'
-import Main from './components/container/Main'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-toastify/dist/ReactToastify.css';
+import './App.css';
+import './assets/css/style.css';
 
 import { BASENAME } from './components/config/constants';
+import Loader from './components/views/common/Loader'
+import Main from './components/container/Main'
 
 class App extends Component {
 
@@ -19,8 +19,8 @@ class App extends Component {
   }
   
   componentDidMount(){
-      this.setState({ loading: false })
-      setTimeout(() => this.setState({ loading : false }), 1500); // simulates an async action, and hides the spinner
+    //   this.setState({ loading: false })
+      setTimeout(() => this.setState({ loading : false }), 500); // simulates an async action, and hides the spinner
   }
 
   render() {
@@ -37,7 +37,7 @@ class App extends Component {
           <div>
               <BrowserRouter basename={BASENAME}>
                   {renderlayout}
-                  <ToastContainer autoClose={3000} className="toast-container" />
+                  <ToastContainer autoClose={3000} />
               </BrowserRouter>
           </div>
       )

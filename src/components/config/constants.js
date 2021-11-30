@@ -18,7 +18,7 @@ switch (REACT_APP_ENV) {
 
         BASEURL = process.env.PUBLIC_URL;
         BASENAME = process.env.REACT_APP_ROUTE_FLAG;    
-        API_BASEURL = "http://restapi.adequateshop.com";
+        API_BASEURL = "https://reqres.in";
         
         AWS_CONFING.AWS_S3_BUCKET = 'AWS_S3_BUCKET'
         AWS_CONFING.AWS_S3_ACCESSKEYID = 'AWS_S3_ACCESSKEYID'
@@ -38,7 +38,7 @@ switch (REACT_APP_ENV) {
 
         BASEURL = process.env.PUBLIC_URL;
         BASENAME = process.env.REACT_APP_ROUTE_FLAG;
-        API_BASEURL = "http://restapi.adequateshop.com";
+        API_BASEURL = "https://reqres.in";
 
         AWS_CONFING.AWS_S3_BUCKET = 'AWS_S3_BUCKET'
         AWS_CONFING.AWS_S3_ACCESSKEYID = 'AWS_S3_ACCESSKEYID'
@@ -58,7 +58,7 @@ switch (REACT_APP_ENV) {
 
         BASEURL = process.env.PUBLIC_URL;
         BASENAME = process.env.REACT_APP_ROUTE_FLAG;
-        API_BASEURL = "http://restapi.adequateshop.com";
+        API_BASEURL = "https://reqres.in";
 
         AWS_CONFING.AWS_S3_BUCKET = 'AWS_S3_BUCKET'
         AWS_CONFING.AWS_S3_ACCESSKEYID = 'AWS_S3_ACCESSKEYID'
