@@ -5,17 +5,13 @@ import { toast } from 'react-toastify';
 
 import { userActions } from '../../../redux/actions/user.actions'
 
-import Api from "../../../helper/Api.js";
+import api from "../../../helper/Api.js";
 import { connect } from 'react-redux';
-const api = new Api();
 export class Login extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            headers: {
-                'Content-Type': 'application/json',
-            },
             user: {
                 email: '',
                 password: ''
@@ -43,15 +39,16 @@ export class Login extends Component {
         event.preventDefault();
 
         if (this.validator.allValid()) {
-            api.post("/api/login", {
-                headers: this.state.headers,
-                data: this.state.user
-            }).then(res => {
+            api.post("/api/login", {...this.state.user}).then(res => {
                 if (res.status === 200) { 
                     this.props.login(res?.data);
                     this.props.history.push('/dashboard');
                 } else {
                     toast.error(res.message);
+                }
+            }).catch((err)=>{
+                if(err?.response?.data){
+                    toast.error(err.response.data.error);
                 }
             })
         } else {

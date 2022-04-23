@@ -26,7 +26,20 @@ function loadFromLocalStorage() {
     }
 }
 
+// function getLocalRefreshToken() {
+//     const user = JSON.parse(localStorage.getItem("projectUser"));
+//     return user?.userData?.refreshToken;
+// };
+
+function getLocalAccessToken() {
+    const user = JSON.parse(localStorage.getItem("projectUser"));
+    return user?.userData?.token;
+};
+
+
 export {
     saveToLocalStorage,
     loadFromLocalStorage,
+    // getLocalRefreshToken,
+    getLocalAccessToken
 }
