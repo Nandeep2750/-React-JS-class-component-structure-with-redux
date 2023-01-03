@@ -1,45 +1,34 @@
-// convert object to string and store in localStorage
-function saveToLocalStorage(userData) {
+import { REDUX_LOCAL_STORE_KEY } from "../config/constants";
+
+export const loadState = () => {
     try {
-        var user = { 
-            "loggedIn": true, 
-            "userData": userData,
-            "token" : userData.token 
+        const serializedState = localStorage.getItem(REDUX_LOCAL_STORE_KEY);
+        if (serializedState === null) {
+            return undefined;
         }
-        localStorage.setItem('projectUser', JSON.stringify(user));
+        return JSON.parse(serializedState);
     } catch (e) {
-        console.error(e);
+        console.error("🚀 ~ file: LocalstorageHelper.js ~ line 11 ~ loadState ~ e", e)
         return undefined;
     }
-}
-
-// load string from localStarage and convert into an Object
-// invalid output must be undefined
-function loadFromLocalStorage() {
-    try {
-        const user = localStorage.getItem("projectUser");
-        if (user === null) return undefined;
-        return JSON.parse(user);
-    } catch (e) {
-        console.error(e);
-        return undefined;
-    }
-}
-
-// function getLocalRefreshToken() {
-//     const user = JSON.parse(localStorage.getItem("projectUser"));
-//     return user?.userData?.refreshToken;
-// };
-
-function getLocalAccessToken() {
-    const user = JSON.parse(localStorage.getItem("projectUser"));
-    return user?.userData?.token;
 };
 
+export const saveState = (state) => {
+    try {
+        const serializedState = JSON.stringify(state);
+        localStorage.setItem(REDUX_LOCAL_STORE_KEY, serializedState);
+    } catch (e) {
+        console.error("🚀 ~ file: LocalstorageHelper.js ~ line 21 ~ saveState ~ e", e)
+        return undefined;
+    }
+};
 
-export {
-    saveToLocalStorage,
-    loadFromLocalStorage,
-    // getLocalRefreshToken,
-    getLocalAccessToken
-}
+export function getLocalRefreshToken() {
+    const data = JSON.parse(localStorage.getItem(REDUX_LOCAL_STORE_KEY));
+    return data?.authentication?.userData?.refreshToken;
+};
+
+export function getLocalAccessToken() {
+    const data = JSON.parse(localStorage.getItem(REDUX_LOCAL_STORE_KEY));
+    return data?.authentication?.userData?.token;
+};

@@ -4,19 +4,30 @@
 
 const REACT_APP_ENV = process.env.REACT_APP_ENV || 'development'
 
-var BASEURL = '';
-var BASENAME = '';
-var API_BASEURL = '';
+let BASEURL = '';
+let BASENAME = '';
+let API_BASEURL = '';
 
-var AWS_CONFING = {}
+let AWS_CONFING = {}
 
-var FILE_PREFIX_CODE = "255";
+let FILE_PREFIX_CODE = "255";
+
+BASEURL = process.env.PUBLIC_URL;
+BASENAME = process.env.REACT_APP_ROUTE_FLAG;    
+
+
+const APP_ENV_TYPE = Object.freeze({
+    LOCAL: 'local',
+    DEVELOPMENT: 'development',
+    STAGING: 'staging',
+    PRODUCTION: 'production',
+});
+
+const REDUX_LOCAL_STORE_KEY = 'store-data'
 
 switch (REACT_APP_ENV) {
-    case 'local':
+    case APP_ENV_TYPE.LOCAL:
 
-        BASEURL = process.env.PUBLIC_URL;
-        BASENAME = process.env.REACT_APP_ROUTE_FLAG;    
         API_BASEURL = "https://reqres.in";
         
         AWS_CONFING.AWS_S3_BUCKET = 'AWS_S3_BUCKET'
@@ -33,18 +44,16 @@ switch (REACT_APP_ENV) {
 
         break;
 
-    case 'development':
+    case APP_ENV_TYPE.DEVELOPMENT:
 
-        BASEURL = process.env.PUBLIC_URL;
-        BASENAME = process.env.REACT_APP_ROUTE_FLAG;
         API_BASEURL = "https://reqres.in";
 
-        AWS_CONFING.AWS_S3_BUCKET = 'AWS_S3_BUCKET'
-        AWS_CONFING.AWS_S3_ACCESSKEYID = 'AWS_S3_ACCESSKEYID'
-        AWS_CONFING.AWS_S3_SECRETACCESSKEY = 'AWS_S3_SECRETACCESSKEY'
-        AWS_CONFING.AWS_S3_REGION = 'AWS_S3_REGION'
+        AWS_CONFING.AWS_S3_BUCKET = 'AWS_S3_BUCKET_DEVELOPMENT'
+        AWS_CONFING.AWS_S3_ACCESSKEYID = 'AWS_S3_ACCESSKEYID_DEVELOPMENT'
+        AWS_CONFING.AWS_S3_SECRETACCESSKEY = 'AWS_S3_SECRETACCESSKEY_DEVELOPMENT'
+        AWS_CONFING.AWS_S3_REGION = 'AWS_S3_REGION_DEVELOPMENT'
     
-        AWS_CONFING.AWS_S3_URL = 'AWS_S3_URL'
+        AWS_CONFING.AWS_S3_URL = 'AWS_S3_URL_DEVELOPMENT'
 
         AWS_CONFING.FOLDER_ADD = 'project/temp'
 
@@ -53,18 +62,16 @@ switch (REACT_APP_ENV) {
 
         break;
 
-    case 'master':
+    case APP_ENV_TYPE.PRODUCTION:
 
-        BASEURL = process.env.PUBLIC_URL;
-        BASENAME = process.env.REACT_APP_ROUTE_FLAG;
         API_BASEURL = "https://reqres.in";
 
-        AWS_CONFING.AWS_S3_BUCKET = 'AWS_S3_BUCKET'
-        AWS_CONFING.AWS_S3_ACCESSKEYID = 'AWS_S3_ACCESSKEYID'
-        AWS_CONFING.AWS_S3_SECRETACCESSKEY = 'AWS_S3_SECRETACCESSKEY'
-        AWS_CONFING.AWS_S3_REGION = 'AWS_S3_REGION'
+        AWS_CONFING.AWS_S3_BUCKET = 'AWS_S3_BUCKET_PRODUCTION'
+        AWS_CONFING.AWS_S3_ACCESSKEYID = 'AWS_S3_ACCESSKEYID_PRODUCTION'
+        AWS_CONFING.AWS_S3_SECRETACCESSKEY = 'AWS_S3_SECRETACCESSKEY_PRODUCTION'
+        AWS_CONFING.AWS_S3_REGION = 'AWS_S3_REGION_PRODUCTION'
     
-        AWS_CONFING.AWS_S3_URL = 'AWS_S3_URL'
+        AWS_CONFING.AWS_S3_URL = 'AWS_S3_URL_PRODUCTION'
 
         AWS_CONFING.FOLDER_ADD = 'project/temp'
 
@@ -82,5 +89,7 @@ export {
     BASENAME,
     AWS_CONFING,
     API_BASEURL,
-    FILE_PREFIX_CODE
+    FILE_PREFIX_CODE,
+    APP_ENV_TYPE,
+    REDUX_LOCAL_STORE_KEY
 }

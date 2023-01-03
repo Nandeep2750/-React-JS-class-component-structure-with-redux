@@ -1,5 +1,5 @@
 import { Types } from '../../config/actionTypes';
-import { saveToLocalStorage, loadFromLocalStorage } from '../../helper/LocalstorageHelper'
+import { store } from '../store/store';
 
 function login(userAllData) {
     return dispatch => {
@@ -7,11 +7,9 @@ function login(userAllData) {
         let userData = {}
         userData.token = userAllData.token
 
-        saveToLocalStorage(userData)
-
-        dispatch({ 
-            type : Types.LOGIN, 
-            payload : { userData : userData , token : userData.token }
+        dispatch({
+            type: Types.LOGIN,
+            payload: { userData: userData, token: userData.token }
         });
     };
 }
@@ -19,26 +17,23 @@ function login(userAllData) {
 function edit(userAllData) {
     return dispatch => {
 
-        let projectUser = loadFromLocalStorage();
+        let projectUser = store.getState().authentication;
         let userData = projectUser.userData
 
         userData.token = userAllData.token
 
-        saveToLocalStorage(userData)
-
-        dispatch({ 
-            type : Types.EDIT, 
-            payload : { userData : userData , token : userData.token }
+        dispatch({
+            type: Types.EDIT,
+            payload: { userData: userData, token: userData.token }
         });
     };
 }
 
 function logout() {
     return dispatch => {
-        localStorage.removeItem('projectUser');
-        dispatch({ 
-            type: Types.LOGOUT, 
-            payload : { userData : null , token : null }
+        dispatch({
+            type: Types.LOGOUT,
+            payload: { userData: null, token: null }
         });
     }
 }
