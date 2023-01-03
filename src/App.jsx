@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import './assets/css/style.css';
 
-import { BASENAME } from './components/config/constants';
+import { BASENAME } from './config/constants';
 import Loader from './components/views/common/Loader'
 import Main from './components/container/Main'
 

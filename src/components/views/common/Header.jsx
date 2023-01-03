@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import FeatherIcon from 'feather-icons-react';
 
-import { userActions } from '../../redux/actions/user.actions'
-import { Logo } from "../../image"
+import { userActions } from '../../../redux/actions/user.actions'
+import { Logo } from "../../../helper/importHelper/image"
 import { connect } from "react-redux";
 class Header extends Component {
     // eslint-disable-next-line no-useless-constructor

@@ -3,9 +3,9 @@ import SimpleReactValidator from 'simple-react-validator';
 import { Card, Form, Button, Alert } from 'react-bootstrap'
 import { toast } from 'react-toastify';
 
-import { userActions } from '../../../redux/actions/user.actions'
+import { userActions } from '../../../../redux/actions/user.actions'
 
-import api from "../../../helper/Api.js";
+import api from "../../../../helper/Api.js";
 import { connect } from 'react-redux';
 export class Login extends Component {
 
