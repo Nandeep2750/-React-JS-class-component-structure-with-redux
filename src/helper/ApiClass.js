@@ -24,19 +24,18 @@ class Api {
             .then(response => {
                 resolve(response);
             }).catch(error => {
-                // console.log("🚀 ~ file: Api.js ~ line 37 ~ Api ~ returnnewPromise ~ error", error)
+                console.error("🚀 ~ file: Api.js ~ line 37 ~ Api ~ returnnewPromise ~ error", error)
             });
         });
     }
     
     post(url, data) {
-        //console.log('API HANDLER', data)
         return new Promise((resolve, reject) => {
             this.api(METHOD.POST, url, data)
             .then(response => {
                 resolve(response);
             }).catch(error => {
-                // console.log("🚀 ~ file: Api.js ~ line 50 ~ Api ~ returnnewPromise ~ error", error)
+                console.error("🚀 ~ file: Api.js ~ line 50 ~ Api ~ returnnewPromise ~ error", error)
             });
         });
     }
@@ -47,7 +46,7 @@ class Api {
             .then(response => {
                 resolve(response);
             }).catch(error => {
-                // console.log("🚀 ~ file: Api.js ~ line 62 ~ Api ~ returnnewPromise ~ error", error)
+                console.error("🚀 ~ file: Api.js ~ line 62 ~ Api ~ returnnewPromise ~ error", error)
             });
         });
     }
@@ -58,7 +57,7 @@ class Api {
             .then(response => {
                 resolve(response);
             }).catch(error => {
-                // console.log("🚀 ~ file: Api.js ~ line 74 ~ Api ~ returnnewPromise ~ error", error)
+                console.error("🚀 ~ file: Api.js ~ line 74 ~ Api ~ returnnewPromise ~ error", error)
             });
         });
     }
@@ -76,7 +75,6 @@ class Api {
             axios(axiosConfig)
             .then(response => {
                 let obj = {}
-                // console.log("🚀 ~ file: Api.js ~ line 80 ~ Api ~ returnnewPromise ~ response", response)
                 if (response.status && parseInt(response.status) === 204) {
                     obj = {
                         'status': response.status,
@@ -93,8 +91,6 @@ class Api {
                 resolve(obj);
             })
             .catch(error => {
-                // console.log("🚀 ~ file: Api.js ~ line 93 ~ Api ~ returnnewPromise ~ error", error)
-                // console.log("🚀 ~ file: Api.js ~ line 93 ~ Api ~ returnnewPromise ~ error.response", error.response)
                 if(error.response && error.response.data){
                     let obj = {}
                     if( parseInt(error.response.status) === 400 ){

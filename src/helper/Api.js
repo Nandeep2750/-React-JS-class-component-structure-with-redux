@@ -14,7 +14,6 @@ const instance = axios.create({
 instance.interceptors.request.use(
     (config) => {
         const token = getLocalAccessToken();
-        console.log("🚀 ~ file: Api.js ~ line 17 ~ token", token)
         if (token) {
             config.headers["token"] = token;
         }
